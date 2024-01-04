@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using OnlineShop.Application.DTOs.City;
+using OnlineShop.Application.DTOs.Color;
 
 namespace OnlineShop.Application.Features.Color.Requests.Commands
 {

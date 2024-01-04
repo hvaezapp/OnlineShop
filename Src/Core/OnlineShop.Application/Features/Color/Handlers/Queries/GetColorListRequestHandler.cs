@@ -31,7 +31,7 @@ namespace OnlineShop.Application.Features.Color.Handlers.Queries
 
         public async Task<List<GetColorDto>> Handle(GetColorListRequest request, CancellationToken cancellationToken)
         {
-            var response = new BaseCommandResponse();
+            
 
             try
             {

@@ -81,17 +81,17 @@ namespace OnlineShop.Persistence.Repositories
             }
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> where, CancellationToken cancellationToken)
+        public virtual async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> where, CancellationToken cancellationToken)
         {
             return await _table.Where(where).AsNoTracking().ToListAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken)
+        public virtual async Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken)
         {
             return await _table.AsNoTracking().ToListAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<T>> GetAllAsyncWithPaging(Expression<Func<T, bool>> where , int skip , int take ,  CancellationToken cancellationToken)
+        public virtual async Task<IEnumerable<T>> GetAllAsyncWithPaging(Expression<Func<T, bool>> where , int skip , int take ,  CancellationToken cancellationToken)
         {
 
             IQueryable<T> query = _table;
@@ -107,7 +107,7 @@ namespace OnlineShop.Persistence.Repositories
             //return await _table.Where(where).AsNoTracking().Skip(skip).Take(take).ToListAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<T>> GetAllAsyncWithPaging(Expression<Func<T, bool>> where, int skip, int take, string join , CancellationToken cancellationToken)
+        public virtual async Task<IEnumerable<T>> GetAllAsyncWithPaging(Expression<Func<T, bool>> where, int skip, int take, string join , CancellationToken cancellationToken)
         {
             IQueryable<T> query = _table;
 
@@ -130,7 +130,7 @@ namespace OnlineShop.Persistence.Repositories
         }
 
 
-        public async Task<IEnumerable<T>> GetAllAsyncWithPaging(int skip, int take, CancellationToken cancellationToken)
+        public virtual async Task<IEnumerable<T>> GetAllAsyncWithPaging(int skip, int take, CancellationToken cancellationToken)
         {
             return await _table.AsNoTracking().Skip(skip).Take(take).ToListAsync(cancellationToken);
         }
@@ -179,8 +179,6 @@ namespace OnlineShop.Persistence.Repositories
         }
 
 
-    
-
 
         public virtual async Task<T> GetAsync(Expression<Func<T, bool>> where, string joinstring, CancellationToken cancellationToken)
         {
@@ -207,11 +205,7 @@ namespace OnlineShop.Persistence.Repositories
 
 
 
-
-
-
-
-        public async Task SaveChanges(CancellationToken cancellationToken)
+        public virtual async Task SaveChanges(CancellationToken cancellationToken)
         {
             await _context.SaveChangesAsync(cancellationToken);
         }

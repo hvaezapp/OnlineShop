@@ -1,4 +1,4 @@
-﻿namespace OnlineShop.Application.DTOs.City
+﻿namespace OnlineShop.Application.DTOs.Color
 {
     public class CreateColorDto
     {

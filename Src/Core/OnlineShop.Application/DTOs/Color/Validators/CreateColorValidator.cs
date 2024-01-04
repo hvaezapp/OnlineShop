@@ -1,19 +1,26 @@
 ﻿using FluentValidation;
 
-namespace OnlineShop.Application.DTOs.City.Validators
+namespace OnlineShop.Application.DTOs.Color.Validators
 {
     public class CreateColorValidator : AbstractValidator<CreateColorDto>
     {
         public CreateColorValidator()
         {
 
-            RuleFor(p => p.Name).NotEmpty().WithMessage("{PropertyName} is required.")
-              .NotNull()
-              .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50");
+            RuleFor(p => p.Name)
+                .NotEmpty()
+                .NotNull()
+                .WithMessage("{PropertyName} is required.")
+                .MaximumLength(50)
+                .WithMessage("{PropertyName} must not exceed 50");
 
-            RuleFor(p => p.Code).NotEmpty().WithMessage("{PropertyName} is required.")
-            .NotNull()
-            .MaximumLength(10).WithMessage("{PropertyName} must not exceed 50");
+
+            RuleFor(p => p.Code)
+                .NotEmpty()
+                .NotNull()
+                .WithMessage("{PropertyName} is required.")
+                .MaximumLength(10)
+                .WithMessage("{PropertyName} must not exceed 50");
 
         }
     }

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using OnlineShop.Application.DTOs.City;
+using OnlineShop.Application.DTOs.Color;
 using OnlineShop.Application.Features.Color.Requests.Commands;
 using OnlineShop.Application.Features.Color.Requests.Queries;
 
