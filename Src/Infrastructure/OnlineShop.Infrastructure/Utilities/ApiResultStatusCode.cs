@@ -4,11 +4,11 @@ namespace OnlineShop.Infrastructure.Utilities
 {
     public enum ApiResultStatusCode
     {
-        [Display(Name = "عملیات با موفقیت انجام شد")]
-        Success = 0,
-
         [Display(Name = "خطایی در سرور رخ داده است")]
-        ServerError = 1,
+        ServerError = 0,
+
+        [Display(Name = "عملیات با موفقیت انجام شد")]
+        Success = 1,
 
         [Display(Name = "پارامتر های ارسالی معتبر نیستند")]
         BadRequest = 2,

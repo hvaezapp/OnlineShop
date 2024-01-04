@@ -42,6 +42,7 @@ namespace OnlineShop.Api.Middlewares
             catch (AppException exception)
             {
                 _logger.LogError(exception, exception.Message);
+
                 httpStatusCode = exception.HttpStatusCode;
                 apiStatusCode = exception.ApiStatusCode;
 

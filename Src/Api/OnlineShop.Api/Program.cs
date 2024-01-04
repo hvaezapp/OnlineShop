@@ -1,9 +1,32 @@
+using OnlineShop.Api.Middlewares;
+using OnlineShop.Application;
+using OnlineShop.Persistence;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+builder.Services.ConfigureApplicationServices();
+builder.Services.ConfigurePersistenceServices(builder.Configuration);
+
+
 builder.Services.AddEndpointsApiExplorer();
+
+
 builder.Services.AddSwaggerGen();
+
+
+builder.Services.AddCors(o =>
+{
+    o.AddPolicy("CorsPolicy", b =>
+    b.AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    );
+});
 
 var app = builder.Build();
 
@@ -13,30 +36,22 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseAuthentication();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+app.UseHttpsRedirection();
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+app.UseAuthorization();
+
+
+app.UseCors("CorsPolicy");
+
+app.UseCustomExceptionHandler();
+
+app.MapControllers();
 
 app.Run();
 
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+
+
+
+
