@@ -1,4 +1,6 @@
-﻿using OnlineShop.Application.DTOs.ProductColor;
+﻿using OnlineShop.Application.DTOs.Common;
+using OnlineShop.Application.DTOs.ProductAddOn;
+using OnlineShop.Application.DTOs.ProductColor;
 using OnlineShop.Application.DTOs.ProductSize;
 using OnlineShop.Infrastructure.Enums;
 using System;
@@ -9,8 +11,9 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Application.DTOs.Product
 {
-    public class CreateProductDto
+    public class GetProductDto : IBaseDto<long>
     {
+        public long Id { get; set; }
         public string Title { get; set; }
         public decimal Price { get; set; }
         public string Image { get; set; }
@@ -19,17 +22,14 @@ namespace OnlineShop.Application.DTOs.Product
         public DateTime? DiscountExpireAt { get; set; }
 
 
+        public List<GetProductSizeDto> ProductSizes { get; set; } = new();
+        public List<GetProductColorDto> ProductColors { get; set; } = new();
+        public List<GetProductAddOnDto> ProductAddOns { get; set; } = new();
 
-        public List<CreateProductSizeDto> ProductSizes { get; set; } = new();
-        public List<CreateProductColorDto> ProductColors { get; set; } = new();
-        public List<int> ProductAddOns { get; set; } = new();
 
+
+
+     
 
     }
-
-   
-    
-
-
-    
 }

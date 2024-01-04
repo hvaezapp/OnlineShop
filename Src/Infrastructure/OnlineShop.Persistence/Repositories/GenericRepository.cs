@@ -51,7 +51,7 @@ namespace OnlineShop.Persistence.Repositories
         }
 
         public virtual async Task Delete(T entity)
-        {
+        {   
             try
             {
                 if (_context.Entry(entity).State == EntityState.Detached)
@@ -94,7 +94,7 @@ namespace OnlineShop.Persistence.Repositories
         public virtual async Task<IEnumerable<T>> GetAllAsyncWithPaging(Expression<Func<T, bool>> where , int skip , int take ,  CancellationToken cancellationToken)
         {
 
-            IQueryable<T> query = _table;
+            IQueryable<T> query = _table.AsNoTracking();
 
             if (where != where)
             {
@@ -102,14 +102,14 @@ namespace OnlineShop.Persistence.Repositories
             }
 
 
-            return await query.AsNoTracking().Skip(skip).Take(take).ToListAsync(cancellationToken);
+            return await query.Skip(skip).Take(take).ToListAsync(cancellationToken);
 
             //return await _table.Where(where).AsNoTracking().Skip(skip).Take(take).ToListAsync(cancellationToken);
         }
 
         public virtual async Task<IEnumerable<T>> GetAllAsyncWithPaging(Expression<Func<T, bool>> where, int skip, int take, string join , CancellationToken cancellationToken)
         {
-            IQueryable<T> query = _table;
+            IQueryable<T> query = _table.AsNoTracking();
 
             if (where != null)
             {
@@ -126,7 +126,7 @@ namespace OnlineShop.Persistence.Repositories
                 }
             }
 
-            return await query.AsNoTracking().Skip(skip).Take(take).ToListAsync(cancellationToken);
+            return await query.Skip(skip).Take(take).ToListAsync(cancellationToken);
         }
 
 
@@ -141,7 +141,7 @@ namespace OnlineShop.Persistence.Repositories
            IOrderedQueryable<T>> orderbyVariable, string joinString, CancellationToken cancellationToken)
         {
 
-            IQueryable<T> query = _table;
+            IQueryable<T> query = _table.AsNoTracking();
 
             //where cond
             if (where != null)
@@ -167,15 +167,15 @@ namespace OnlineShop.Persistence.Repositories
                 }
             }
 
-            return await query.AsNoTracking().ToListAsync(cancellationToken);
+            return await query.ToListAsync(cancellationToken);
 
         }
 
         public virtual async Task<T> GetSingleAsync(Expression<Func<T, bool>> where, CancellationToken cancellationToken)
         {
             if (where != null)
-                return await _table.Where(where).FirstOrDefaultAsync(cancellationToken);
-            return await _table.FirstOrDefaultAsync(cancellationToken);
+                return await _table.AsNoTracking().Where(where).FirstOrDefaultAsync(cancellationToken);
+            return await _table.AsNoTracking().FirstOrDefaultAsync(cancellationToken);
         }
 
 
@@ -183,7 +183,7 @@ namespace OnlineShop.Persistence.Repositories
         public virtual async Task<T> GetAsync(Expression<Func<T, bool>> where, string joinstring, CancellationToken cancellationToken)
         {
 
-            IQueryable<T> query = _table;
+            IQueryable<T> query = _table.AsNoTracking();
 
             if (where != null)
             {
@@ -200,6 +200,43 @@ namespace OnlineShop.Persistence.Repositories
 
             return await query
                           .FirstOrDefaultAsync(cancellationToken);
+        }
+
+
+        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> where, string join, CancellationToken cancellationToken)
+        {
+            IQueryable<T> query = _table.AsNoTracking();
+
+            if (where != null)
+            {
+                query = query.Where(where);
+            }
+
+            if (!string.IsNullOrEmpty(join))
+            {
+                foreach (var item in join.Split(','))
+                {
+                    query = query.Include(item);
+                }
+            }
+
+           return await query
+                          .ToListAsync(cancellationToken); 
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> where, Func<IQueryable<T>, IOrderedQueryable<T>> orderbyVariable, CancellationToken cancellationToken)
+        {
+            IQueryable<T> query = _table.AsNoTracking();
+
+            if (where != null)
+                query = query.Where(where);
+
+            if (orderbyVariable != null)
+                query = orderbyVariable(query);
+
+            return await query
+                         .ToListAsync(cancellationToken);
+
         }
 
 
@@ -235,6 +272,8 @@ namespace OnlineShop.Persistence.Repositories
         }
 
        
+
+
         #endregion
 
     }

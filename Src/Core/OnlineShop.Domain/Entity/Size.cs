@@ -10,12 +10,11 @@ namespace OnlineShop.Domain.Entity
     public class Size : BaseDomainEntity<int>
     { 
         public string Name { get;  set; }
-
-        //public  ICollection<Product> Products { get; set; }
+        public  ICollection<Product> Products { get; set; }
 
         public Size()
         {
-            //Products = new List<Product>();
+            Products = new List<Product>();
         }
 
         public Size(string name)

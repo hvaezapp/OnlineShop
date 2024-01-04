@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineShop.Persistence.Context;
 
@@ -11,9 +12,11 @@ using OnlineShop.Persistence.Context;
 namespace OnlineShop.Persistence.Migrations
 {
     [DbContext(typeof(OnlineShopDbContext))]
-    partial class OnlineShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240104151948_db_rel")]
+    partial class dbrel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -275,7 +278,7 @@ namespace OnlineShop.Persistence.Migrations
                         .IsRequired();
 
                     b.HasOne("OnlineShop.Domain.Entity.Product", "Product")
-                        .WithMany()
+                        .WithMany("AddOns")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -294,7 +297,7 @@ namespace OnlineShop.Persistence.Migrations
                         .IsRequired();
 
                     b.HasOne("OnlineShop.Domain.Entity.Product", "Product")
-                        .WithMany()
+                        .WithMany("Colors")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -307,7 +310,7 @@ namespace OnlineShop.Persistence.Migrations
             modelBuilder.Entity("OnlineShop.Domain.Entity.ProductSize", b =>
                 {
                     b.HasOne("OnlineShop.Domain.Entity.Product", "Product")
-                        .WithMany()
+                        .WithMany("Sizes")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -331,6 +334,15 @@ namespace OnlineShop.Persistence.Migrations
             modelBuilder.Entity("OnlineShop.Domain.Entity.Color", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("OnlineShop.Domain.Entity.Product", b =>
+                {
+                    b.Navigation("AddOns");
+
+                    b.Navigation("Colors");
+
+                    b.Navigation("Sizes");
                 });
 
             modelBuilder.Entity("OnlineShop.Domain.Entity.Size", b =>

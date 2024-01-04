@@ -12,11 +12,11 @@ namespace OnlineShop.Domain.Entity
         public string Name { get;  set; }
         public string Code { get; set; }
 
-        //public  ICollection<Product> Products { get; set; }
+        public  ICollection<Product> Products { get; set; }
 
         public Color()
         {
-           //Products = new List<Product>();
+           Products = new List<Product>();
         }
 
         public Color(string name, string code)

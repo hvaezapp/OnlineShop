@@ -11,9 +11,9 @@ namespace OnlineShop.Infrastructure.Enums
     public enum PriceType : byte
     {
         [Display(Name = "ثابت")]
-        Const,
-        [Display(Name = "دلار")]
-        Dollar
+        CONSTANT,
+        [Display(Name = "فرمول")]
+        FORMULA
     }
 
 }

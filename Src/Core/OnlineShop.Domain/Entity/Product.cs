@@ -20,19 +20,19 @@ namespace OnlineShop.Domain.Entity
 
 
 
-       // public ICollection<Size> Sizes { get; set; }
-       // public ICollection<Color> Colors { get; set; }
-       // public ICollection<AddOn> AddOns { get; set; }
+        public virtual ICollection<ProductSize> Sizes { get; set; }
+        public virtual ICollection<ProductColor> Colors { get; set; }
+        public virtual ICollection<ProductAddOn> AddOns { get; set; }
 
 
 
         public Product()
         {
-            PriceType = PriceType.Const;
+            PriceType = PriceType.CONSTANT;
 
-            //Sizes =  new List<Size>();
-           // Colors = new List<Color>();
-            //AddOns = new List<AddOn>();
+            Sizes = new List<ProductSize>();
+            Colors = new List<ProductColor>();
+            AddOns = new List<ProductAddOn>();
         }
 
         public Product(string title, decimal price,

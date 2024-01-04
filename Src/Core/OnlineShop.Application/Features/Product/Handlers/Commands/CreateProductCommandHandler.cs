@@ -53,7 +53,7 @@ namespace OnlineShop.Application.Features.Product.Handlers.Commands
                 {
                     Title = request.CreateProductDto.Title,
                     ImageUrl = imageName,
-                    Price = request.CreateProductDto.PriceType == PriceType.Dollar ?
+                    Price = request.CreateProductDto.PriceType == PriceType.FORMULA ?
                                 (request.CreateProductDto.Price * (_configuration.GetSection("Dollar").Value.ToDecimal()))
                                 : request.CreateProductDto.Price,
                     PriceType = request.CreateProductDto.PriceType,

@@ -6,6 +6,7 @@ using OnlineShop.Application.DTOs.Size;
 using OnlineShop.Application.Features.Color.Requests.Commands;
 using OnlineShop.Application.Features.Color.Requests.Queries;
 using OnlineShop.Application.Features.Product.Requests.Commands;
+using OnlineShop.Application.Features.Product.Requests.Queries;
 using OnlineShop.Application.Features.Size.Requests.Commands;
 using OnlineShop.Application.Features.Size.Requests.Queries;
 
@@ -21,14 +22,14 @@ namespace OnlineShop.Api.Controllers.v1
         }
 
 
-        // GET: api/<ProductController>
-        //[HttpGet("[action]")]
-        //public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
-        //{
+        //GET: api/<ProductController>
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
+        {
 
-        //    return Ok(await _mediator.Send(new GetSizeListRequest(), cancellationToken));
+            return Ok(await _mediator.Send(new GetProductListRequest(), cancellationToken));
 
-        //}
+        }
 
 
 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineShop.Persistence.Context;
 
@@ -11,9 +12,11 @@ using OnlineShop.Persistence.Context;
 namespace OnlineShop.Persistence.Migrations
 {
     [DbContext(typeof(OnlineShopDbContext))]
-    partial class OnlineShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240104171143_db_rel_fix")]
+    partial class dbrelfix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
