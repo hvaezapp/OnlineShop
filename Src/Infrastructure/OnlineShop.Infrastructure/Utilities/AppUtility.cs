@@ -10,21 +10,28 @@ namespace OnlineShop.Infrastructure.Utilities
     public static class AppUtility
     {
 
-        public static bool IsWeekend(this DateTime dateTime)
+        public static string GetGuid() => Guid.NewGuid()
+                                           .ToString()
+                                           .Replace("-","");
+
+        public static int ToInt(this object val)
         {
-            return (dateTime.DayOfWeek == DayOfWeek.Saturday ||
-                    dateTime.DayOfWeek == DayOfWeek.Sunday);
+            return Convert.ToInt32(val);
+        }
+        public static byte ToByte(this object val)
+        {
+            return Convert.ToByte(val);
         }
 
-
-        public static string ToMonthName(this DateTime dateTime)
+        public static long ToLong(this object val)
         {
-            return CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(dateTime.Month);
+            return Convert.ToInt64(val);
         }
 
-        public static string ToShortMonthName(this DateTime dateTime)
+        public static decimal ToDecimal(this object val)
         {
-            return CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(dateTime.Month);
+            return Convert.ToDecimal(val);
         }
+
     }
 }

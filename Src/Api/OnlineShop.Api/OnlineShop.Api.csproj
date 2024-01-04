@@ -17,4 +17,8 @@
     <ProjectReference Include="..\..\Infrastructure\OnlineShop.Persistence\OnlineShop.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="uploads\product\" />
+  </ItemGroup>
+
 </Project>
