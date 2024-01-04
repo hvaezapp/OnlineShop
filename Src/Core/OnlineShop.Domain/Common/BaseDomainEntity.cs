@@ -4,6 +4,7 @@ namespace OnlineShop.Domain.Common
 {
     public abstract class BaseDomainEntity<T> where T : struct
     {
+        [Key]
         public T Id { get; set; }
         public DateTime DateCreated { get; set; }
         public bool IsDeleted { get; set; }

@@ -17,8 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Color\Handlers\Queries\" />
-    <Folder Include="Features\Color\Requests\Queries\" />
     <Folder Include="Models\" />
   </ItemGroup>
 

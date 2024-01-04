@@ -9,12 +9,12 @@ namespace OnlineShop.Domain.Entity
 {
     public class ProductColor : BaseDomainEntity<long>
     {
-        public long ProductId { get; private set; }
-        public virtual Product Product { get; private set; }
-        public int ColorId { get; private set; }
-        public virtual Color Color { get; private set; }
-        public decimal PriceDifference { get; private set; }
-        public int Qty { get; private set; }
+        public long ProductId { get;     set; }
+        public  Product Product { get; set; }
+        public int ColorId { get; set; }
+        public  Color Color { get; set; }
+        public decimal PriceDifference { get;  set; }
+        public int Qty { get;  set; }
 
 
         public ProductColor()

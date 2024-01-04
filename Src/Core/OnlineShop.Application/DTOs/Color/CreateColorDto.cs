@@ -1,4 +1,9 @@
 ﻿namespace OnlineShop.Application.DTOs.City
 {
-    public record CreateColorDto(string Name);
+    public class CreateColorDto
+    {
+        public string Name { get; set; }
+        public string Code { get; set; }
+    }
+
 }

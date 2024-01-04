@@ -10,12 +10,12 @@ namespace OnlineShop.Domain.Entity
 {
     public class ProductSize : BaseDomainEntity<long>
     {
-        public long ProductId { get; private set; }
-        public virtual Product Product { get; private set; }
-        public int SizeId { get; private set; }
-        public virtual Size Size { get; private set; }
-        public decimal PriceDifference { get; private set; }
-        public int Qty { get; private set; }
+        public long ProductId { get;  set; }
+        public  Product Product { get;  set; }
+        public int SizeId { get;  set; }
+        public Size Size { get;  set; }
+        public decimal PriceDifference { get;  set; }
+        public int Qty { get;  set; }
 
 
         public ProductSize()

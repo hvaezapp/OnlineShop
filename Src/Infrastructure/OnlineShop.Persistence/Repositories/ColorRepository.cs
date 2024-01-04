@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using OnlineShop.Application.Contracts.Persistence;
 using OnlineShop.Domain.Entity;
+using OnlineShop.Persistence.Context;
 using System.Data;
 using System.Drawing;
 
@@ -14,7 +15,7 @@ namespace OnlineShop.Persistence.Repositories
         public ColorRepository(OnlineShopDbContext dbContext)
             : base(dbContext)
         {
-            _dbContext = dbContext;
+            _dbContext =  dbContext;
         }
 
     }

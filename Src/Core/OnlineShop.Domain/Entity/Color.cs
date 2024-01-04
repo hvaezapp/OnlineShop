@@ -9,13 +9,14 @@ namespace OnlineShop.Domain.Entity
 {
     public class Color : BaseDomainEntity<int>
     { 
-        public string Name { get;  private set; }
-        public string Code { get; private set; }
-        public virtual ICollection<Product> Products { get; set; }
+        public string Name { get;  set; }
+        public string Code { get; set; }
+
+        //public  ICollection<Product> Products { get; set; }
 
         public Color()
         {
-           Products = new List<Product>();
+           //Products = new List<Product>();
         }
 
         public Color(string name, string code)

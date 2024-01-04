@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Application.DTOs.Common
 {
-    public class BaseDto<T>
+    public interface IBaseDto<T>
     {
         public T Id { get; set; }
     }

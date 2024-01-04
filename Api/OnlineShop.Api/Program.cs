@@ -1,4 +1,6 @@
 using OnlineShop.Api.Middlewares;
+using OnlineShop.Application;
+using OnlineShop.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,8 +8,25 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+builder.Services.ConfigureApplicationServices();
+builder.Services.ConfigurePersistenceServices(builder.Configuration);
+
+
 builder.Services.AddEndpointsApiExplorer();
+
+
 builder.Services.AddSwaggerGen();
+
+
+builder.Services.AddCors(o =>
+{
+    o.AddPolicy("CorsPolicy", b =>
+    b.AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    );
+});
 
 var app = builder.Build();
 
@@ -17,11 +36,22 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseAuthentication();
+
+app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+
+app.UseCors("CorsPolicy");
 
 app.UseCustomExceptionHandler();
 
 app.MapControllers();
 
 app.Run();
+
+
+
+
+

@@ -1,8 +1,9 @@
-﻿using OnlineShop.Application.Contracts.Persistence;
-using OnlineShop.Persistence.Repositories;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OnlineShop.Application.Contracts.Persistence;
+using OnlineShop.Persistence.Context;
+using OnlineShop.Persistence.Repositories;
 
 namespace OnlineShop.Persistence
 {
@@ -15,13 +16,11 @@ namespace OnlineShop.Persistence
             services.AddDbContext<OnlineShopDbContext>(options =>
             {
                 options.UseSqlServer(configuration
-                    .GetConnectionString("OnlineShopConnectionString"));
+                    .GetConnectionString("SqlSever"));
             });
-
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IColorRepository, ColorRepository>();
-           
 
             return services;
         }

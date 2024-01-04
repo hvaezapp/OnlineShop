@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using System.Threading;
+using OnlineShop.Persistence.Context;
 
 namespace OnlineShop.Persistence.Repositories
 {
@@ -83,6 +84,11 @@ namespace OnlineShop.Persistence.Repositories
         public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> where, CancellationToken cancellationToken)
         {
             return await _table.Where(where).AsNoTracking().ToListAsync(cancellationToken);
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken)
+        {
+            return await _table.AsNoTracking().ToListAsync(cancellationToken);
         }
 
         public async Task<IEnumerable<T>> GetAllAsyncWithPaging(Expression<Func<T, bool>> where , int skip , int take ,  CancellationToken cancellationToken)

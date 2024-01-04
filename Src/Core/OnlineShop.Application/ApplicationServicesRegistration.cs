@@ -8,7 +8,7 @@ namespace OnlineShop.Application
     {
         public static void ConfigureApplicationServices(this IServiceCollection services)
         {
-            // services.AddAutoMapper(typeof(MappingProfile));
+          
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
 

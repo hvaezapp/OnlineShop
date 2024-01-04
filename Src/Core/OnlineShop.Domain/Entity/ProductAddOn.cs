@@ -9,25 +9,26 @@ namespace OnlineShop.Domain.Entity
 {
     public class ProductAddOn : BaseDomainEntity<long>
     {
-        public long ProductId { get; private set; }
-        public virtual Product Product { get; private set; }
+        public long ProductId { get;     set; }
+        public  Product Product { get; set; }
 
-        public long AddOnId { get; private set; }
-        public virtual AddOn AddOn { get; private set; }
+        public  int AddOnId { get; set; }
+        public  AddOn AddOn { get;   set; }
+
 
         public ProductAddOn()
         {
             
         }
 
-        public ProductAddOn(long productId , long addOnId)
+        public ProductAddOn(long productId , int addOnId)
         {
             ProductId = productId;
             AddOnId = addOnId;  
         }
 
 
-        public void Edit(long productId, long addOnId)
+        public void Edit(long productId, int addOnId)
         {
             ProductId = productId;
             AddOnId = addOnId;

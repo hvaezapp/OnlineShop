@@ -2,7 +2,7 @@
 using OnlineShop.Domain.Common;
 using OnlineShop.Domain.Entity;
 
-namespace OnlineShop.Persistence
+namespace OnlineShop.Persistence.Context
 {
     public class OnlineShopDbContext : DbContext
     {
@@ -21,13 +21,13 @@ namespace OnlineShop.Persistence
 
         }
 
-        public  DbSet<Color> Color { get; set; }
-        public  DbSet<Size> Size { get; set; }
-        public  DbSet<ProductSize> ProductSize { get; set; }
-        public  DbSet<ProductColor> ProductColor { get; set; }
-        public  DbSet<Product> Product { get; set; }
-        public  DbSet<AddOn> AddOn { get; set; }
-        public  DbSet<ProductAddOn> ProductAddOn { get; set; }
+        public DbSet<Color> Color { get; set; }
+        public DbSet<Size> Size { get; set; }
+        public DbSet<ProductSize> ProductSize { get; set; }
+        public DbSet<ProductColor> ProductColor { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<AddOn> AddOn { get; set; }
+        public DbSet<ProductAddOn> ProductAddOn { get; set; }
 
 
 

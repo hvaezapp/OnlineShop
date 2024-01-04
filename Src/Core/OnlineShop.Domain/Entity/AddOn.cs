@@ -9,15 +9,15 @@ namespace OnlineShop.Domain.Entity
 {
     public class AddOn : BaseDomainEntity<int>
     {
-        public string Name { get; private set; }
-        public decimal Price { get; private set; }
+        public string Name { get; set; }
+        public decimal Price { get;  set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        //public ICollection<Product> Products { get; set; } 
 
 
         public AddOn()
         {
-            Products = new List<Product>();
+           // Products = new List<Product>();
         }
 
         public AddOn(string name , decimal price)

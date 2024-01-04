@@ -8,6 +8,8 @@ namespace OnlineShop.Application.Contracts.Persistence
         Task Update(T entity);
         Task Delete(T entity);
         Task<T> GetByIdAsync(object Id, CancellationToken cancellationToken);
+
+        Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken);
         Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> where, CancellationToken cancellationToken);
         Task<IEnumerable<T>> GetAllAsyncWithPaging(Expression<Func<T, bool>> where, int skip, int take, CancellationToken cancellationToken);
         Task<IEnumerable<T>> GetAllAsyncWithPaging(int skip, int take, CancellationToken cancellationToken);
