@@ -25,7 +25,7 @@ namespace OnlineShop.Persistence
             services.AddScoped<IAddOnRepository, AddOnRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductAddOnRepository, ProductAddOnRepository>();
-            services.AddScoped<IProductSizeRepository , ProductSizeRepository>();
+            services.AddScoped<IProductSizeRepository, ProductSizeRepository>();
             services.AddScoped<IProductColorRepository, ProductColorRepository>();
 
 
